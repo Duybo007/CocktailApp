@@ -8,31 +8,8 @@ import { reservSchema } from '../schemas';
 
 function Reservations() {
     const datePickerId = new Date().toISOString().split("T")[0];
-    const peopleRef = useRef(null)
-    const dateRef = useRef(null)
-    const timeRef = useRef(null)
     const router = useRouter()
     const [code, setCode] = useState(null)
-
-    const [people, setPeople] = useState("")
-    const [date, setDate] = useState("")
-    const [time, setTime] = useState("")
-
-
-    const handleClick = async (e) => {
-        e.preventDefault()
-        try {
-            const docRef = await addDoc(collection(db, "booking"), {
-              people: peopleRef.current.value,
-              date: dateRef.current.value,
-              time: timeRef.current.value
-            });
-            setCode(docRef.id)
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-    }
 
     const check = (e) => {
         e.preventDefault()
@@ -78,11 +55,9 @@ function Reservations() {
 
         <div className='app__newsletter-input flex__center reservation'>
             <div 
-            className="rev-input"
-            >
+            className="rev-input">
                 <input
                 id="people"
-                ref={peopleRef} 
                 type="number" 
                 onChange={handleChange} 
                 value={values.people} 
@@ -95,7 +70,6 @@ function Reservations() {
             <div className="rev-input">
                 <input 
                     id="date"
-                    ref={dateRef} 
                     type="date" 
                     min={datePickerId} 
                     onChange={handleChange} 
@@ -107,7 +81,6 @@ function Reservations() {
             <div className="rev-input">
                 <select 
                     id="time"
-                    ref={timeRef} 
                     onChange={handleChange} 
                     value={values.time}
                     onBlur={handleBlur}
@@ -151,12 +124,7 @@ function Reservations() {
         </div>
         
         <div className='flex__center rev-btns'>
-            <button disabled={isSubmitting} /*onClick={handleClick}*/ type="submit" className='custom__button rev-btn'>Book Now</button>
-            {/* {people !="" && date!="" && time != "" ? (
-                <button onClick={handleClick} className='custom__button rev-btn'>Book Now</button>
-            ) : (
-                <button onClick={(e) => e.preventDefault()} className='custom__button_empty rev-btn' >Book Now</button>
-            )} */}
+            <button disabled={isSubmitting} type="submit" className='custom__button rev-btn'>Book Now</button>
             <button onClick={check} className='check rev-btn'>Check My Reservations</button>
         </div>
         {code && (

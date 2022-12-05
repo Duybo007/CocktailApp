@@ -837,6 +837,10 @@ select.input-error {
   opacity: 0.35;
 }
 
+.modify-btn:disabled{
+  opacity: 0.35;
+}
+
 .modify-input{
   display: flex;
   margin-top:0;
@@ -845,10 +849,6 @@ select.input-error {
 
 .modify-input input, select{
   gap:1rem
-}
-
-.modalContainer form{
-  width: 100%;
 }
 
 .modify-btn{
@@ -1008,11 +1008,18 @@ select.input-error {
 .modalRight h1{
   font-size: 2.5rem;
   color: #0C0C0C;
+  margin-bottom: 1rem;
 }
 
 .modalRight p{
   font-size: 1.2rem;
   color: #0C0C0C;
+}
+
+.modalRight .error {
+  color: #fc8181;
+  position: absolute;
+  top: -110%;
 }
 
 .closeBtn{
@@ -1224,6 +1231,7 @@ select.input-error {
 
   .modalContainer img{
     border-radius: 0;
+    height: 30%;
   }
   .modalContainer{
     flex-direction: column;

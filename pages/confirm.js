@@ -96,7 +96,7 @@ function confirm() {
             </form>
         </div>)}
         <Cancel open={openCancel} onClose={onClose}/>
-        <Modify code={code} open={openModify} onClose={()=>setOpenModify(false)}/>
+        <Modify code={code} open={openModify} onClose={()=>setOpenModify(false)} info={info}/>
         </div>
         
   )
